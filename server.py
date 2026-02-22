@@ -14,12 +14,13 @@ def stream_logs(process):
 def start_agent():
     print("🚀 Starting LiveKit Agent subprocess...")
     process = subprocess.Popen(
-        ["python3", "agent.py", "start"],
+        ["python3", "agent.py", "dev"],
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
         bufsize=1
     )
+    print("🚀 Starting LiveKit Agent subprocess end...")
 
     threading.Thread(target=stream_logs, args=(process,), daemon=True).start()
 
